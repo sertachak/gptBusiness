@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 import openai
 from dotenv import load_dotenv
@@ -6,7 +8,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-
+openai.api_key = os.environ.get("OPEN_AI_APIKEY")
 
 promt = "Can you give a random small sentence just for trying purpose"
 
@@ -16,8 +18,8 @@ def businesstest():  # put application's code here
     response = openai.chat.completions.create(
         messages=[
             {
-            "role": "user",
-            "content": "Can you give a random small sentence just for trying purpose"
+                "role": "user",
+                "content": "Can you give a random small sentence just for trying purpose"
             }
         ],
         model="text-davinci-003"
